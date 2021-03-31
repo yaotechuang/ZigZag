@@ -35,7 +35,9 @@ CLASSIFIERS = [
         "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 
-INSTALL_REQUIRES = []
+INSTALL_REQUIRES = ['numpy>=1.13.4',                    
+                    'cython>=0.25',
+                    ]
 
 ###############################################################################
 
