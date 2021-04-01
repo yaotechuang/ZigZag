@@ -79,7 +79,7 @@ cpdef peak_valley_pivots(double [:] X,
         int_t t_n = len(X)
         ndarray[int_t, ndim=1] pivots = np.zeros(t_n, dtype=np.int_)
         int_t trend = -initial_pivot
-        int_t last_pivot_t = 0
+        # int_t last_pivot_t = 0
         double last_pivot_x = X[0]
         double x, r
 
@@ -102,24 +102,24 @@ cpdef peak_valley_pivots(double [:] X,
                 pivots[t] = trend
                 trend = PEAK
                 last_pivot_x = x
-                last_pivot_t = t
+                # last_pivot_t = t
             elif x < last_pivot_x:
                 last_pivot_x = x
-                last_pivot_t = t
+                # last_pivot_t = t
         else:
             if r <= down_thresh:
                 # pivots[last_pivot_t] = trend
                 pivots[t] = trend
                 trend = VALLEY
                 last_pivot_x = x
-                last_pivot_t = t
+                # last_pivot_t = t
             elif x > last_pivot_x:
                 last_pivot_x = x
-                last_pivot_t = t
+                # last_pivot_t = t
 
-    if last_pivot_t == t_n-1:
-        pivots[t_n-1] = trend
-    elif pivots[t_n-1] == 0:
+    # if last_pivot_t == t_n-1:
+    #     pivots[t_n-1] = trend
+    if pivots[t_n-1] == 0:
         pivots[t_n-1] = -trend
 
     return pivots
