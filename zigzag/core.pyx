@@ -98,7 +98,8 @@ cpdef peak_valley_pivots(double [:] X,
 
         if trend == -1:
             if r >= up_thresh:
-                pivots[last_pivot_t] = trend
+                # pivots[last_pivot_t] = trend
+                pivots[t-1] = trend
                 trend = PEAK
                 last_pivot_x = x
                 last_pivot_t = t
@@ -107,7 +108,8 @@ cpdef peak_valley_pivots(double [:] X,
                 last_pivot_t = t
         else:
             if r <= down_thresh:
-                pivots[last_pivot_t] = trend
+                # pivots[last_pivot_t] = trend
+                pivots[t-1] = trend
                 trend = VALLEY
                 last_pivot_x = x
                 last_pivot_t = t
