@@ -47,7 +47,7 @@ cpdef int_t identify_initial_pivot(double [:] X,
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-cpdef peak_valley_pivots(double [:] X,
+cpdef peak_valley_pivots_ex(double [:] X,
                          double up_thresh,
                          double down_thresh):
     """
