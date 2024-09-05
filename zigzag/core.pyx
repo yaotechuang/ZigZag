@@ -1,6 +1,6 @@
 cimport cython
 import numpy as np
-from numpy cimport ndarray, int_t
+from numpy cimport ndarray, int32_t as int_t
 
 DEF PEAK = 1
 DEF VALLEY = -1
@@ -77,7 +77,7 @@ cpdef peak_valley_pivots(double [:] X,
                                                      up_thresh,
                                                      down_thresh)
         int_t t_n = len(X)
-        ndarray[int_t, ndim=1] pivots = np.zeros(t_n, dtype=np.int_)
+        ndarray[int_t, ndim=1] pivots = np.zeros(t_n, dtype=np.int32)
         int_t trend = -initial_pivot
         # int_t last_pivot_t = 0
         double last_pivot_x = X[0]
@@ -166,7 +166,7 @@ def pivots_to_modes(int_t [:] pivots):
     cdef:
         int_t x, t
         ndarray[int_t, ndim=1] modes = np.zeros(len(pivots),
-                                                dtype=np.int_)
+                                                dtype=np.int32)
         int_t mode = -pivots[0]
 
     modes[0] = pivots[0]
